@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            let btn1 = document.getElementById('btn1')
+            btn1.onclick = ()=>{
+                let xhr = new XMLHttpRequest()
+                xhr.open('GET', 'http://localhost:8080/a', true)
+                xhr.send()
+
+                xhr.onreadystatechange = ()=>{
+                    if(xhr.readyState === 4){
+                        if(xhr.status >=200 && xhr.status <300 || xhr.status === 304){
+                            alert('成功')
+                            let json = JSON.parse(xhr.responseText)
+                            console.log(json)
+                        }else{
+                            alert('失败')
+                        }
+                    }
+                }
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <input type="button" value="得到数据" id="btn1">
+</body>
+</html>
