@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            let oBtn=document.getElementById('btn1')
+            let oImg=document.getElementById('img1')
+            oBtn.onclick=async function(){
+                let res=await (fetch('data/1.png'))
+                let data=await res.blob()
+                console.log(data)
+
+                URL.createObjectURL(data)
+                oImg.src=data
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="获取数据" id="btn1">
+    <img id="img1">
+</body>
+</html>
